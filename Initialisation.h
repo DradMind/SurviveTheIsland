@@ -3,8 +3,12 @@
 #include <stdbool.h>
 #include <stdio.h>
 
-/*typedef struct case{
+Camera3D SetupCamera(void);
+
+
+
+typedef struct case{
     Vector3 position;
     Vector3 velocity;
     bool CaseRetournee;
-} case;*/
+} case;
