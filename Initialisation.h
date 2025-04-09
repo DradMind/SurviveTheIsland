@@ -3,7 +3,7 @@
 #include <stdbool.h>
 #include <stdio.h>
 
-Camera3D SetupCamera(void);
+Camera3D SetupCamera(Vector3 Centre);
 
 void InitialiserPlateau(void);
 
