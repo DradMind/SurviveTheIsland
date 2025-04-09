@@ -5,10 +5,12 @@
 
 Camera3D SetupCamera(void);
 
+void InitialiserPlateau(void);
 
-
-typedef struct case{
+typedef struct {
     Vector3 position;
-    Vector3 velocity;
-    bool CaseRetournee;
-} case;
+    bool selectionJoueur;
+	Model model;
+} Case;
+
+Case Plateau[7][7];

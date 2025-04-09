@@ -9,23 +9,26 @@ int main(void) {
     const int screenHeight = GetScreenHeight();
 
     InitWindow(screenWidth, screenHeight, "Survive the Island - 3D Prototype");
-    SetTargetFPS(60);
+    SetTargetFPS(600);
     ToggleBorderlessWindowed();
 	Camera3D camera = SetupCamera();
-
+	InitialiserPlateau();
     while (!WindowShouldClose()) {
-        BeginDrawing();
-        ClearBackground(RAYWHITE);
-        BeginMode3D(camera);
-		AfficherPlateau();
 
+        BeginDrawing();
+
+        ClearBackground(RAYWHITE);
+
+        BeginMode3D(camera);
+
+        AfficherPlateau();
+        
         EndMode3D();
 
-        DrawText("ZQSD to move, SPACE to jump", 10, 10, 20, DARKGRAY);
         DrawFPS(10, 40);
+
         EndDrawing();
     }
-
     CloseWindow();
     return 0;
 }
