@@ -35,23 +35,23 @@ void InitialiserPlateau(void) {
 	};
 	for (int x = 0; x < 7; x++) {
 		for (int y = 0; y < 7; y++) {
-			int r = rand()%4;
+			int r = rand()%3;
 			switch (r) {
 			case 0:
 				Plateau[x][y] = sable;
+				Plateau[x][y].position = (Vector3){ x * 2.0f, 0.0f, y * 2.0f };
 				break;
 			case 1:
 				Plateau[x][y] = foret;
+				Plateau[x][y].position = (Vector3){ x * 2.0f, 0.0f, y * 2.0f };
 				break;
 			case 2:
 				Plateau[x][y] = montagne;
-				break;
-			case 3:
-				Plateau[x][y] = mer;
+				Plateau[x][y].position = (Vector3){ x * 2.0f, 0.0f, y * 2.0f };
 				break;
 			}
-			Plateau[x][y] = mer;
-			Plateau[x][y].position = (Vector3){ x * 2.0f, 0.0f, y * 2.0f };
 		}
 	}
+	Plateau[3][3] = mer;
+	Plateau[3][3].position = (Vector3){ 6.0f, 0.0f, 6.0f };
 }

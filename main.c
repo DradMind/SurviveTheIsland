@@ -15,43 +15,19 @@ int main(void) {
     InitWindow(screenWidth, screenHeight, "Survive the Island - 3D Prototype");
     SetTargetFPS(600);
     ToggleBorderlessWindowed();
-    Vector3 Centre = { 20.0f, 10.0f, 20.0f };
+    Vector3 Centre = { 0.0f, 0.0f, 0.0f };
 	Camera3D camera = SetupCamera(Centre);
 	InitialiserPlateau();
     float angle = 0.0f;
     float rotationSpeed = PI / 2.0f;
-    float cameraDistance = Vector3Distance(camera.position, Centre);
+    int cameraMode = CAMERA_FIRST_PERSON;
     
     while (!WindowShouldClose()) {
-        if (IsKeyPressed(KEY_RIGHT))
-        {
-            // Rotate right (clockwise) by 90 degrees
-            angle -= rotationSpeed;
-
-            // Update camera position based on the new angle
-            camera.position.x = Centre.x + cameraDistance * sinf(angle);
-            camera.position.z = Centre.z + cameraDistance * cosf(angle);
-
-            // Ensure camera still looks at the rotation point
-            camera.target = Centre;
-        }
-        else if (IsKeyPressed(KEY_LEFT))
-        {
-            // Rotate left (counter-clockwise) by 90 degrees
-            angle += rotationSpeed;
-
-            // Update camera position based on the new angle
-            camera.position.x = Centre.x + cameraDistance * sinf(angle);
-            camera.position.z = Centre.z + cameraDistance * cosf(angle);
-
-            // Ensure camera still looks at the rotation point
-            camera.target = Centre;
-        }
 
         BeginDrawing();
-
+     
         ClearBackground(RAYWHITE);
-
+		
         BeginMode3D(camera);
 
         AfficherPlateau();
@@ -59,7 +35,7 @@ int main(void) {
         EndMode3D();
 
         DrawFPS(10, 40);
-
+        AfficherMenu();
         EndDrawing();
     }
     CloseWindow();
