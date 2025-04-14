@@ -16,8 +16,7 @@ void AfficherPlateau(void) {
     }
 }
 
-void AfficherMenu(void) {
-	bool MenuOuvert = true;
+bool AfficherMenu(bool MenuOuvert) {
 	int ScreenHeight = GetScreenHeight();
 	int ScreenWidth = GetScreenWidth();
 
@@ -33,6 +32,7 @@ void AfficherMenu(void) {
             if (CheckCollisionPointRec(mousePoint, playButton)) {
                 printf("Play button clicked!\n");
 				MenuOuvert = false;  // Fermer le menu
+                return true;
             }
             if (CheckCollisionPointRec(mousePoint, quitButton)) {
                 printf("Quit button clicked!\n");

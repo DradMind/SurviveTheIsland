@@ -13,7 +13,7 @@ int main(void) {
     const int screenHeight = GetScreenHeight();
 
     InitWindow(screenWidth, screenHeight, "Survive the Island - 3D Prototype");
-    SetTargetFPS(600);
+    SetTargetFPS(60);
     ToggleBorderlessWindowed();
     Vector3 Centre = { 0.0f, 0.0f, 0.0f };
 	Camera3D camera = SetupCamera(Centre);
@@ -21,7 +21,10 @@ int main(void) {
     float angle = 0.0f;
     float rotationSpeed = PI / 2.0f;
     int cameraMode = CAMERA_FIRST_PERSON;
-    
+	bool DemarrerJeu = false;
+
+	bool MenuOuvert = true;
+
     while (!WindowShouldClose()) {
 
         BeginDrawing();
@@ -35,7 +38,10 @@ int main(void) {
         EndMode3D();
 
         DrawFPS(10, 40);
-        AfficherMenu();
+        DemarrerJeu = AfficherMenu(MenuOuvert);
+		if (DemarrerJeu) {
+            
+		}
         EndDrawing();
     }
     CloseWindow();

@@ -1,3 +1,4 @@
 #pragma once
+#include <stdbool.h>
 void AfficherPlateau(void);
-void AfficherMenu(void);
+bool AfficherMenu(bool MenuOuvert);
