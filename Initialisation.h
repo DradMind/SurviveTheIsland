@@ -13,4 +13,4 @@ typedef struct {
 	Model model;
 } Case;
 
-Case Plateau[7][7];
+Case Plateau[13][13];

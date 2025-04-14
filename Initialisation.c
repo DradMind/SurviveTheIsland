@@ -7,7 +7,7 @@
 
 Camera3D SetupCamera(Vector3 Centre) {
     Camera3D camera = { 0 };
-    camera.position = (Vector3){ 20.0f, 10.0f, 20.0f };
+    camera.position = (Vector3){ 40.0f, 20.0f, 40.0f };
     camera.target = Centre;
     camera.up = (Vector3){ 0.0f, 1.0f, 0.0f };
     camera.fovy = 45.0f;
@@ -33,25 +33,31 @@ void InitialiserPlateau(void) {
 		.selectionJoueur = false,
 		.model = LoadModel("3d/CaseSable.obj"),
 	};
-	for (int x = 0; x < 7; x++) {
-		for (int y = 0; y < 7; y++) {
-			int r = rand()%3;
-			switch (r) {
-			case 0:
-				Plateau[x][y] = sable;
-				Plateau[x][y].position = (Vector3){ x * 2.0f, 0.0f, y * 2.0f };
-				break;
-			case 1:
-				Plateau[x][y] = foret;
-				Plateau[x][y].position = (Vector3){ x * 2.0f, 0.0f, y * 2.0f };
-				break;
-			case 2:
-				Plateau[x][y] = montagne;
-				Plateau[x][y].position = (Vector3){ x * 2.0f, 0.0f, y * 2.0f };
-				break;
+	for (int x = 0; x < 13; x++) {
+		for (int y = 0; y < 13; y++) {
+			Plateau[x][y].model = LoadModel("3d/CaseMer.obj");
+			Plateau[x][y].position = (Vector3){ x * 2.0f, 0.0f, y * 2.0f };
+		}
+		for (int x = 3; x < 10; x++) {
+			for (int y = 3; y < 10; y++) {
+				int r = rand() % 3;
+				switch (r) {
+				case 0:
+					Plateau[x][y] = sable;
+					Plateau[x][y].position = (Vector3){ x * 2.0f, 0.0f, y * 2.0f };
+					break;
+				case 1:
+					Plateau[x][y] = foret;
+					Plateau[x][y].position = (Vector3){ x * 2.0f, 0.0f, y * 2.0f };
+					break;
+				case 2:
+					Plateau[x][y] = montagne;
+					Plateau[x][y].position = (Vector3){ x * 2.0f, 0.0f, y * 2.0f };
+					break;
+				}
 			}
 		}
+		//Plateau[6][6] = mer;
+		//Plateau[6][6].position = (Vector3){ 6.0f, 0.0f, 6.0f };
 	}
-	Plateau[3][3] = mer;
-	Plateau[3][3].position = (Vector3){ 6.0f, 0.0f, 6.0f };
 }
