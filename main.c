@@ -9,8 +9,8 @@
 
 
 int main(void) {
-    const int screenWidth = GetScreenWidth();
-    const int screenHeight = GetScreenHeight();
+    const float screenWidth = GetScreenWidth();
+    const float screenHeight = GetScreenHeight();
 
     InitWindow(screenWidth, screenHeight, "Survive the Island - 3D Prototype");
     SetTargetFPS(60);
@@ -24,6 +24,7 @@ int main(void) {
 	int DemarrerJeu = 0;
 
     int MenuOuvert = 1;
+    int NbJoueurs = 2;
 
     while (!WindowShouldClose()) {
 
@@ -38,12 +39,11 @@ int main(void) {
         EndMode3D();
 
         DrawFPS(10, 40);
-        AfficherMenu(&MenuOuvert);
-		if (MenuOuvert==0) {
-			printf("Menu fermé, jeu en cours...\n");
-			DrawRectangle(0, 0, 600,700, BLUE);
-
-		}
+        AfficherMenu(&MenuOuvert, &NbJoueurs);
+		if (MenuOuvert==0) { 
+                printf("Menu fermé, jeu en cours...\n");
+			    DrawRectangle(0, 0, 600,700, BLUE);
+            }
         EndDrawing();
         
     }
