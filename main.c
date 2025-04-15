@@ -35,15 +35,14 @@ int main(void) {
         BeginMode3D(camera);
 
         AfficherPlateau();
-		
+        if (MenuOuvert == 0) {
+            BougerCamera(camera);
+        }
         EndMode3D();
 
         DrawFPS(10, 40);
         AfficherMenu(&MenuOuvert, &NbJoueurs);
-		if (MenuOuvert==0) { 
-                printf("Menu fermé, jeu en cours...\n");
-			    DrawRectangle(0, 0, 600,700, BLUE);
-            }
+		
         EndDrawing();
         
     }
