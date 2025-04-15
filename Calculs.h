@@ -1,0 +1,1 @@
+int PourcentageEntier(float pourcentage, float valeur);

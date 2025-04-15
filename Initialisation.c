@@ -57,7 +57,7 @@ void InitialiserPlateau(void) {
 				}
 			}
 		}
-		//Plateau[6][6] = mer;
-		//Plateau[6][6].position = (Vector3){ 6.0f, 0.0f, 6.0f };
+		Plateau[6][6] = mer;
+		Plateau[6][6].position = (Vector3){ 6.0f, 0.0f, 6.0f };
 	}
 }
