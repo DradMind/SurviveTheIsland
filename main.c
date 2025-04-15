@@ -21,9 +21,9 @@ int main(void) {
     float angle = 0.0f;
     float rotationSpeed = PI / 2.0f;
     int cameraMode = CAMERA_FIRST_PERSON;
-	bool DemarrerJeu = false;
+	int DemarrerJeu = 0;
 
-	bool MenuOuvert = true;
+    int MenuOuvert = 1;
 
     while (!WindowShouldClose()) {
 
@@ -38,12 +38,20 @@ int main(void) {
         EndMode3D();
 
         DrawFPS(10, 40);
-        DemarrerJeu = AfficherMenu(MenuOuvert);
-		if (DemarrerJeu) {
-            
+        AfficherMenu(&MenuOuvert);
+		if (MenuOuvert==0) {
+			printf("Menu fermé, jeu en cours...\n");
+			DrawRectangle(0, 0, 600,700, BLUE);
+
 		}
         EndDrawing();
+        
     }
+	for (int i = 0; i < 13; i++) {
+		for (int j = 0; j < 13; j++) {
+			UnloadModel(Plateau[i][j].model);
+		}
+	}
     CloseWindow();
     return 0;
 }

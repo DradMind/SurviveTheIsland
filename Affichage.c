@@ -17,27 +17,33 @@ void AfficherPlateau(void) {
     }
 }
 
-bool AfficherMenu(bool MenuOuvert) {
+void AfficherMenu(int* MenuOuvert) {
+	
 	int ScreenHeight = GetScreenHeight(); //recupere la hauteur de l'ecran
 	int ScreenWidth = GetScreenWidth(); //recupere la largeur de l'ecran
 
-    if (MenuOuvert) {
+    if (*MenuOuvert==1) {
+
+        DrawText("Survive the Island", PourcentageEntier(50, ScreenWidth) - 100, PourcentageEntier(10, ScreenHeight), 20, BLACK);
+		DrawRectangle(0, 0, ScreenWidth, ScreenHeight, Fade(GRAY, 0.5f)); // Dessine un rectangle semi-transparent sur toute la fenêtre
+        
         // Dimensions des boutons
 		Rectangle playButton = { PourcentageEntier(50,ScreenWidth) - 100, PourcentageEntier(50,ScreenHeight) - 100, 200, 50 }; // afficher le bouton play a 50% de l'ecran
         Rectangle quitButton = { PourcentageEntier(50,ScreenWidth)-100, PourcentageEntier(50,ScreenHeight), 200, 50 };
-
+       
         // Vérification des clics sur les boutons
 		Vector2 mousePoint = GetMousePosition(); //recupere la position de la souris
 
         if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
             if (CheckCollisionPointRec(mousePoint, playButton)) {
                 printf("Play button clicked!\n");
-				MenuOuvert = false;  // Fermer le menu et commencer le jeu
-                return true;
+				*MenuOuvert = 0;  // Fermer le menu et commencer le jeu
+                return 1;
             }
             if (CheckCollisionPointRec(mousePoint, quitButton)) {
                 printf("Quit button clicked!\n");
-                CloseWindow();  // Fermer la fenêtre
+                CloseWindow();
+                return 0; // Fermer la fenêtre
             }
         }
 
@@ -51,14 +57,14 @@ bool AfficherMenu(bool MenuOuvert) {
 
         // Vérifier si la souris survole un bouton et le surligne si la souris est dessus
         if (CheckCollisionPointRec(mousePoint, playButton)) {
-            DrawRectangleLinesEx(playButton, 3, RED);
+            DrawRectangleLinesEx(playButton, 3, DARKBLUE);
         }
         else {
             DrawRectangleLinesEx(playButton, 3, BLACK);
         }
 
         if (CheckCollisionPointRec(mousePoint, quitButton)) {
-            DrawRectangleLinesEx(quitButton, 3, RED);
+            DrawRectangleLinesEx(quitButton, 3, DARKBLUE);
         }
         else {
             DrawRectangleLinesEx(quitButton, 3, BLACK);
