@@ -121,13 +121,13 @@ void AfficherMenu(int* MenuOuvert,int* NbJoueurs) {
     }
 }
 
-void BougerCamera(Camera3D camera) {
+void BougerCamera(Camera3D *camera) {
     if (IsKeyDown(KEY_RIGHT)) {
-        camera.position = (Vector3){ -40.0f, 20.0f, -40.0f };
+        camera->position = (Vector3){ -40.0f, 20.0f, -40.0f };
         printf("vers la droite\n");
     }
     if (IsKeyDown(KEY_LEFT)) {
-        camera.position = (Vector3){ 40.0f, 20.0f, 40.0f };
+        camera->position = (Vector3){ 40.0f, 20.0f, 40.0f };
         printf("vers la gauche\n");
     }
 }

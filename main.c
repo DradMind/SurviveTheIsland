@@ -36,7 +36,7 @@ int main(void) {
 
         AfficherPlateau();
         if (MenuOuvert == 0) {
-            BougerCamera(camera);
+            BougerCamera(&camera);
         }
         EndMode3D();
 

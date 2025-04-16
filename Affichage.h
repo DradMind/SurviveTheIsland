@@ -3,4 +3,4 @@
 #include <stdbool.h>
 void AfficherPlateau(void);
 void AfficherMenu(int *MenuOuvert,int *NbJoueurs);
-void BougerCamera(Camera3D camera);
+void BougerCamera(Camera3D *camera);
